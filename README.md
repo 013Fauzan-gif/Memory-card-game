@@ -21,5 +21,6 @@ Permainan mencocokkan kartu di browser. Ada 8 pasang, total 16 kartu. Semuanya t
 ## Tampilan
 
 Tangkapan layar permainan bisa diletakkan di bawah ini.
+<img width="1920" height="1635" alt="screencapture-file-D-Project-Sederhana-Kartu-Memori-index-html-2026-10-02-13_46_38" src="https://github.com/user-attachments/assets/91ffd414-e307-46d4-889f-ba699c5776ef" />
 
 <!-- Contoh: ![Papan permainan](tampilan.png) -->
