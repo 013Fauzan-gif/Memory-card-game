@@ -1,0 +1,321 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --latar: #17212b;
+    --meja: #213140;
+    --krem: #f4efe4;
+    --tinta: #1b242e;
+    --safron: #e2a43a;
+    --safron-gelap: #c4841e;
+    --teks: #f7f1e6;
+    --redup: #c9bfb0;
+    --garis: rgba(244, 239, 228, 0.14);
+    --cocok: #2f8f62;
+    --bayangan: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    color: var(--teks);
+    background:
+        radial-gradient(ellipse 70% 45% at 50% -10%, rgba(226, 164, 58, 0.22), transparent 60%),
+        linear-gradient(180deg, #1d2b38 0%, var(--latar) 42%, #121920 100%);
+}
+
+.halaman {
+    width: min(100% - 2rem, 34rem);
+    margin: 0 auto;
+    padding: 2.2rem 0 2.5rem;
+}
+
+.kepala {
+    text-align: center;
+    margin-bottom: 1.4rem;
+}
+
+.kicker {
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--safron);
+    margin-bottom: 0.4rem;
+}
+
+h1,
+h2 {
+    font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: clamp(2.1rem, 6vw, 3rem);
+    line-height: 1.05;
+}
+
+.deskripsi {
+    margin-top: 0.55rem;
+    color: var(--redup);
+    font-size: 0.98rem;
+}
+
+.statistik {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.7rem;
+    margin-bottom: 1.1rem;
+}
+
+.kotak-stat {
+    background: rgba(18, 28, 36, 0.45);
+    border: 1px solid var(--garis);
+    border-radius: 16px;
+    padding: 0.75rem 0.4rem 0.65rem;
+    text-align: center;
+}
+
+.label {
+    display: block;
+    color: var(--redup);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.2rem;
+}
+
+.kotak-stat strong,
+.hasil dd {
+    font-variant-numeric: tabular-nums;
+    font-size: 1.35rem;
+}
+
+.papan {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.7rem;
+    padding: 0.9rem;
+    background: var(--meja);
+    border-radius: 22px;
+    box-shadow: var(--bayangan), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.kartu {
+    appearance: none;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    aspect-ratio: 3 / 4;
+    perspective: 700px;
+    cursor: pointer;
+    border-radius: 14px;
+}
+
+.kartu:focus-visible,
+.tombol:focus-visible {
+    outline: 3px solid var(--safron);
+    outline-offset: 3px;
+}
+
+.kartu-dalam {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.kartu.terbuka .kartu-dalam,
+.kartu.cocok .kartu-dalam {
+    transform: rotateY(180deg);
+}
+
+.sisi {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    backface-visibility: hidden;
+}
+
+.sisi.belakang {
+    background:
+        radial-gradient(circle at 50% 46%, #f0c36a 0 7%, transparent 8%),
+        repeating-linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.07) 0 2px,
+            transparent 2px 10px
+        ),
+        #1c6d72;
+    box-shadow: inset 0 0 0 3px rgba(244, 239, 228, 0.38);
+}
+
+.sisi.depan {
+    transform: rotateY(180deg);
+    background: var(--krem);
+    color: var(--tinta);
+    box-shadow: inset 0 0 0 2px rgba(27, 36, 46, 0.06);
+}
+
+.kartu.cocok .sisi.depan {
+    box-shadow: inset 0 0 0 3px var(--cocok);
+}
+
+.ikon {
+    width: 58%;
+    height: 58%;
+    display: grid;
+    place-items: center;
+}
+
+.ikon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.kartu:hover:not(.terbuka):not(.cocok) .sisi.belakang {
+    filter: brightness(1.08);
+}
+
+.kartu.cocok .kartu-dalam {
+    animation: cocok 0.35s ease;
+}
+
+@keyframes cocok {
+    0% { transform: rotateY(180deg) scale(1); }
+    50% { transform: rotateY(180deg) scale(1.05); }
+    100% { transform: rotateY(180deg) scale(1); }
+}
+
+.tombol {
+    display: block;
+    width: 100%;
+    margin-top: 1.1rem;
+    border: 0;
+    border-radius: 999px;
+    padding: 0.9rem 1.2rem;
+    background: var(--safron);
+    color: var(--tinta);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.tombol:hover {
+    background: #efb44a;
+}
+
+.tombol:active {
+    background: var(--safron-gelap);
+}
+
+.catatan-kaki {
+    margin-top: 0.75rem;
+    text-align: center;
+    color: var(--redup);
+    font-size: 0.82rem;
+}
+
+.selimut {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 1.2rem;
+    background: rgba(12, 16, 20, 0.72);
+}
+
+.selimut[hidden] {
+    display: none;
+}
+
+.dialog {
+    width: min(100%, 24rem);
+    background: #f7f1e6;
+    color: var(--tinta);
+    border-radius: 24px;
+    padding: 1.6rem 1.4rem 1.3rem;
+    text-align: center;
+    box-shadow: var(--bayangan);
+}
+
+.dialog .kicker {
+    color: var(--safron-gelap);
+}
+
+.dialog h2 {
+    font-size: clamp(1.7rem, 5vw, 2.15rem);
+    line-height: 1.15;
+}
+
+.catatan-menang {
+    margin: 0.7rem 0 1rem;
+    color: #4d463c;
+}
+
+.hasil {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+}
+
+.hasil div {
+    background: #efe6d6;
+    border-radius: 16px;
+    padding: 0.75rem 0.4rem;
+}
+
+.hasil dt {
+    color: #6d6458;
+    font-size: 0.78rem;
+    margin-bottom: 0.15rem;
+}
+
+.hasil dd {
+    font-weight: 700;
+}
+
+.dialog .tombol {
+    margin-top: 1rem;
+}
+
+@media (max-width: 520px) {
+    .halaman {
+        width: min(100% - 1.2rem, 34rem);
+        padding-top: 1.4rem;
+    }
+
+    .papan {
+        gap: 0.45rem;
+        padding: 0.55rem;
+        border-radius: 18px;
+    }
+
+    .sisi,
+    .kartu {
+        border-radius: 10px;
+    }
+
+    .statistik {
+        gap: 0.45rem;
+    }
+
+    .kotak-stat strong {
+        font-size: 1.15rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .kartu-dalam,
+    .kartu.cocok .kartu-dalam {
+        transition: none;
+        animation: none;
+    }
+}

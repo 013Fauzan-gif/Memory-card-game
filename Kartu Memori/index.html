@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartu Memori</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="halaman">
+        <header class="kepala">
+            <p class="kicker">Permainan pasangan</p>
+            <h1>Kartu Memori</h1>
+            <p class="deskripsi">Buka dua kartu. Gambar yang sama tetap terbuka.</p>
+        </header>
+
+        <section class="statistik" aria-label="Statistik permainan">
+            <div class="kotak-stat">
+                <span class="label">Langkah</span>
+                <strong id="langkah">0</strong>
+            </div>
+            <div class="kotak-stat">
+                <span class="label">Waktu</span>
+                <strong id="waktu">00:00</strong>
+            </div>
+            <div class="kotak-stat">
+                <span class="label">Rekor</span>
+                <strong id="rekor" aria-label="Belum ada rekor">—</strong>
+            </div>
+        </section>
+
+        <div id="papan" class="papan" aria-label="Papan kartu"></div>
+
+        <button type="button" class="tombol" id="main-lagi">Main lagi</button>
+        <p class="catatan-kaki">Rekor langkah terbaik disimpan di browser ini.</p>
+    </main>
+
+    <div id="selimut" class="selimut" hidden>
+        <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="judul-menang">
+            <p class="kicker">Permainan selesai</p>
+            <h2 id="judul-menang">Semua pasangan ketemu</h2>
+            <p id="catatan-menang" class="catatan-menang"></p>
+            <dl class="hasil">
+                <div>
+                    <dt>Langkah</dt>
+                    <dd id="langkah-menang">0</dd>
+                </div>
+                <div>
+                    <dt>Waktu</dt>
+                    <dd id="waktu-menang">00:00</dd>
+                </div>
+            </dl>
+            <button type="button" class="tombol" id="main-lagi-menang">Main lagi</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
